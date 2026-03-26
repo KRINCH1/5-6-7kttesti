@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="001-create-base-schema" author="codex">
+        <createTable tableName="customers">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="accounts">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="DECIMAL(15,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="legacy_code" type="VARCHAR(30)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="accounts"
+                                 baseColumnNames="customer_id"
+                                 constraintName="fk_accounts_customer"
+                                 referencedTableName="customers"
+                                 referencedColumnNames="id"/>
+
+        <insert tableName="customers">
+            <column name="id" valueNumeric="1"/>
+            <column name="full_name" value="Ivan Petrov"/>
+        </insert>
+        <insert tableName="customers">
+            <column name="id" valueNumeric="2"/>
+            <column name="full_name" value="Anna Sidorova"/>
+        </insert>
+        <insert tableName="accounts">
+            <column name="id" valueNumeric="10"/>
+            <column name="customer_id" valueNumeric="1"/>
+            <column name="balance" valueNumeric="120000.00"/>
+            <column name="legacy_code" value="OLD-001"/>
+        </insert>
+        <insert tableName="accounts">
+            <column name="id" valueNumeric="11"/>
+            <column name="customer_id" valueNumeric="2"/>
+            <column name="balance" valueNumeric="83000.00"/>
+            <column name="legacy_code" value="OLD-002"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
