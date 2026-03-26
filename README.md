@@ -2,14 +2,11 @@
 
 Проект в папке `D:\bank-kt` полностью независим от дипломной работы и содержит отдельные контрольные точки:
 
+- `КТ-3` - сценарное тестирование операций CRUD для таблицы `users`;
+- `КТ-4` - тестирование производительности и нагрузочное тестирование SQL-запросов;
 - `КТ-5` - тестирование резервного копирования и восстановления данных;
 - `КТ-6` - тестирование миграций и версий базы данных;
 - `КТ-7` - тестирование безопасности базы данных.
-
-Дополнительно в проект добавлены:
-
-- сценарии тестирования `CRUD` для таблицы `users`;
-- нагрузочное тестирование производительности запросов.
 
 ## Используемые технологии
 
@@ -24,12 +21,12 @@
 - `src/test/java/com/bank/kt/BackupRestoreTest.java` - тест для КТ-5
 - `src/test/java/com/bank/kt/MigrationVersioningTest.java` - тест для КТ-6
 - `src/test/java/com/bank/kt/DatabaseSecurityTest.java` - тест для КТ-7
-- `src/test/java/com/bank/kt/UserCrudTest.java` - тестирование CRUD-сценариев
-- `src/test/java/com/bank/kt/QueryPerformanceTest.java` - тестирование производительности запросов
+- `src/test/java/com/bank/kt/UserCrudTest.java` - тест для КТ-3
+- `src/test/java/com/bank/kt/QueryPerformanceTest.java` - тест для КТ-4
 - `src/test/resources/db/changelog` - миграции Liquibase для сценария банка
 - `maven-settings.xml` - локальная настройка Maven для автономной проверки проекта
-- `CRUD_TEST_SCENARIOS.md` - описание CRUD-сценариев
-- `PERFORMANCE_TESTING.md` - описание нагрузочного тестирования
+- `CRUD_TEST_SCENARIOS.md` - описание задания КТ-3
+- `PERFORMANCE_TESTING.md` - описание задания КТ-4
 
 ## Как проверить КТ-5, КТ-6 и КТ-7
 
@@ -50,7 +47,7 @@ mvn -s maven-settings.xml test
 Если всё выполнено успешно, в конце будет результат:
 
 ```text
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 ```
 
@@ -106,9 +103,9 @@ mvn -s maven-settings.xml -Dtest=DatabaseSecurityTest test
 
 Проект реализован как самостоятельное учебное задание по теме `банк` и не связан с дипломной работой. Все три контрольные точки можно проверить как вместе, так и по отдельности через Maven-команды выше.
 
-## Дополнительные задания
+## Проверка КТ-3 и КТ-4
 
-### Проверка CRUD-сценариев
+### КТ-3. Проверка CRUD-сценариев
 
 Описание сценариев:
 
@@ -122,7 +119,7 @@ CRUD_TEST_SCENARIOS.md
 mvn -s maven-settings.xml -Dtest=UserCrudTest test
 ```
 
-### Проверка производительности запросов
+### КТ-4. Проверка производительности запросов
 
 Описание сценариев:
 
