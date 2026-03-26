@@ -6,6 +6,11 @@
 - `КТ-6` - тестирование миграций и версий базы данных;
 - `КТ-7` - тестирование безопасности базы данных.
 
+Дополнительно в проект добавлены:
+
+- сценарии тестирования `CRUD` для таблицы `users`;
+- нагрузочное тестирование производительности запросов.
+
 ## Используемые технологии
 
 - Java 17
@@ -19,8 +24,12 @@
 - `src/test/java/com/bank/kt/BackupRestoreTest.java` - тест для КТ-5
 - `src/test/java/com/bank/kt/MigrationVersioningTest.java` - тест для КТ-6
 - `src/test/java/com/bank/kt/DatabaseSecurityTest.java` - тест для КТ-7
+- `src/test/java/com/bank/kt/UserCrudTest.java` - тестирование CRUD-сценариев
+- `src/test/java/com/bank/kt/QueryPerformanceTest.java` - тестирование производительности запросов
 - `src/test/resources/db/changelog` - миграции Liquibase для сценария банка
 - `maven-settings.xml` - локальная настройка Maven для автономной проверки проекта
+- `CRUD_TEST_SCENARIOS.md` - описание CRUD-сценариев
+- `PERFORMANCE_TESTING.md` - описание нагрузочного тестирования
 
 ## Как проверить КТ-5, КТ-6 и КТ-7
 
@@ -96,3 +105,33 @@ mvn -s maven-settings.xml -Dtest=DatabaseSecurityTest test
 ## Итог
 
 Проект реализован как самостоятельное учебное задание по теме `банк` и не связан с дипломной работой. Все три контрольные точки можно проверить как вместе, так и по отдельности через Maven-команды выше.
+
+## Дополнительные задания
+
+### Проверка CRUD-сценариев
+
+Описание сценариев:
+
+```powershell
+CRUD_TEST_SCENARIOS.md
+```
+
+Запуск практического теста:
+
+```powershell
+mvn -s maven-settings.xml -Dtest=UserCrudTest test
+```
+
+### Проверка производительности запросов
+
+Описание сценариев:
+
+```powershell
+PERFORMANCE_TESTING.md
+```
+
+Запуск нагрузочного теста:
+
+```powershell
+mvn -s maven-settings.xml -Dtest=QueryPerformanceTest test
+```
